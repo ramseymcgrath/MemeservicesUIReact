@@ -1,6 +1,6 @@
 {
-    "name": "appengine-storage",
-    "description": "Node.js Google Cloud Storage sample for Google App Engine",
+    "name": "memeservices-backend",
+    "description": "Backend for the Memeservices application",
     "scripts": {
       "start": "node app.js",
       "test": "mocha system-test/*.test.js --exit --timeout=30000"

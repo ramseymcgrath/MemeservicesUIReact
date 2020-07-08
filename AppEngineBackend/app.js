@@ -53,6 +53,30 @@ app.get('/', (req, res) => {
   res.render('form.pug');
 });
 
+// Return SadCat
+app.get('/sadcat', (req, res) => {
+    const publicUrl = `https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D.jpg`
+    res.status(200).send(publicUrl);
+});
+
+// Return Unforgivable.
+app.get('/unforgivable', (req, res) => {
+    const publicUrl = `https://storage.googleapis.com/memeservices-storage/AllMemes/Unforgivable/Unforgivable1.PNG`
+    res.status(200).send(publicUrl);
+});
+
+// Return Bait.
+app.get('/bait', (req, res) => {
+    const publicUrl = `https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/017.png`
+    res.status(200).send(publicUrl);
+});
+
+// Return Random.
+app.get('/random', (req, res) => {
+    const publicUrl = `https://storage.googleapis.com/memeservices-storage/AllMemes/memes/IMG_1269.PNG`
+    res.status(200).send(publicUrl);
+});
+
 // Process the file upload and upload to Google Cloud Storage.
 app.post('/upload', multer.single('file'), (req, res, next) => {
   if (!req.file) {

@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", Arial, sans-serif;
   color: #3f4850;
 }
 
@@ -48,7 +48,7 @@ h2 {
 }
 
 h1 {
-  font-family: "Lobster", "Josefin Sans", Helvetica, Arial, sans-serif;
+  font-family: "Roboto Mono", "Open Sans", Arial, sans-serif;
   font-size: 4em;
   color: #051c33;
 }

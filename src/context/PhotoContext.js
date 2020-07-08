@@ -9,6 +9,7 @@ const PhotoContextProvider = props => {
   const runSearch = query => {
     axios
       .get(
+        //TODO: We will need to create an API or something to pull different types of memes from the GCloud bucket.
         `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
       )
       .then(response => {

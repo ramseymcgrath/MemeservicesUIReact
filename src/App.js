@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     return (
       <PhotoContextProvider>
-        <HashRouter basename="/SnapScout">
+        <HashRouter basename="/Memeservices">
           <div className="container">
             <Route
               render={props => (
@@ -32,16 +32,16 @@ class App extends Component {
               <Route
                 exact
                 path="/"
-                render={() => <Redirect to="/mountain" />}
+                render={() => <Redirect to="/unforgivable" />}
               />
 
               <Route
-                path="/mountain"
-                render={() => <Item searchTerm="mountain" />}
+                path="/unforgivable"
+                render={() => <Item searchTerm="unforgivable" />}
               />
-              <Route path="/beach" render={() => <Item searchTerm="beach" />} />
-              <Route path="/bird" render={() => <Item searchTerm="bird" />} />
-              <Route path="/food" render={() => <Item searchTerm="food" />} />
+              <Route path="/bait" render={() => <Item searchTerm="bait" />} />
+              <Route path="/sadcat" render={() => <Item searchTerm="sadcat" />} />
+              <Route path="/random" render={() => <Item searchTerm="random" />} />
               <Route
                 path="/search/:searchInput"
                 render={props => (

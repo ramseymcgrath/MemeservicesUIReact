@@ -1,0 +1,3 @@
+Ideas:
+Maybe can write a lambda function to return meme images cheap
+Maybe lambda function can also be used for uploading/naming memes idk

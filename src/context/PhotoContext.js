@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import axios from "axios";
-import { apiKey } from "../api/config";
+//import { apiKey } from "../api/config";
 export const PhotoContext = createContext();
 
 const PhotoContextProvider = props => {
@@ -10,7 +10,8 @@ const PhotoContextProvider = props => {
     axios
       .get(
         //TODO: We will need to create an API or something to pull different types of memes from the GCloud bucket.
-        `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
+        //TODO: Call backend with this url https://memeservices-4c685.uc.r.appspot.com/${query}
+        `https://memeservices-4c685.uc.r.appspot.com/${query}`
       )
       .then(response => {
         setImages(response.data.photos.photo);

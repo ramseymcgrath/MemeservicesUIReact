@@ -1,4 +1,4 @@
 Ideas:
 Google App Engine NodeJS app is used to return images from the bucket
 To deploy App engine code: gcloud app deploy
-Backend should be accessable here: https://memeservices-4c685.uc.r.appspot.com
+Backend is accessable here: https://api.memeservices.com

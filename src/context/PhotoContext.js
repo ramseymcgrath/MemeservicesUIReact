@@ -9,12 +9,14 @@ const PhotoContextProvider = props => {
   const runSearch = query => {
     axios
       .get(
-        //TODO: We will need to create an API or something to pull different types of memes from the GCloud bucket.
         //TODO: Call backend with this url https://api.memeservices.com/${query}
         `https://api.memeservices.com/${query}`
       )
       .then(response => {
-        setImages(response.data.photos.photo);
+        // Api should return the data that gallery then pulls in to display the memes
+        // Probably just a list of image URLs ? 
+        setImages(response.data);
+        console.log(response.data);
         setLoading(false);
       })
       .catch(error => {
@@ -25,6 +27,7 @@ const PhotoContextProvider = props => {
       });
   };
   return (
+    // Here is where gallery is generated?
     <PhotoContext.Provider value={{ images, loading, runSearch }}>
       {props.children}
     </PhotoContext.Provider>

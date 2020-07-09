@@ -16,7 +16,7 @@ const PhotoContextProvider = props => {
         // Api should return the data that gallery then pulls in to display the memes
         // Probably just a list of image URLs ? 
         setImages(response.data);
-        console.log(response.data);
+        //console.log(response.data);
         setLoading(false);
       })
       .catch(error => {

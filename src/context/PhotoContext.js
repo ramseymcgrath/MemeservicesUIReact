@@ -10,8 +10,8 @@ const PhotoContextProvider = props => {
     axios
       .get(
         //TODO: We will need to create an API or something to pull different types of memes from the GCloud bucket.
-        //TODO: Call backend with this url https://memeservices-4c685.uc.r.appspot.com/${query}
-        `https://memeservices-4c685.uc.r.appspot.com/${query}`
+        //TODO: Call backend with this url https://api.memeservices.com/${query}
+        `https://api.memeservices.com/${query}`
       )
       .then(response => {
         setImages(response.data.photos.photo);

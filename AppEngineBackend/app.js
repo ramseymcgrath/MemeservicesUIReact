@@ -57,7 +57,10 @@ app.get('/', (req, res) => {
 app.get('/sadcat', (req, res) => {
   let memes = {
     type: sadcat,
-    memes: ["https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D.jpg","https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550.jpg"]
+    memes: [
+      {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D.jpg"},
+      {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550.jpg"}
+    ]
   };
   let json = JSON.stringify(memes);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
@@ -72,7 +75,9 @@ app.get('/unforgivable', (req, res) => {
   const publicUrl = `https://storage.googleapis.com/memeservices-storage/AllMemes/Unforgivable/Unforgivable1.PNG`
   let memes = {
     type: unforgivable,
-    memes: ["https://storage.googleapis.com/memeservices-storage/AllMemes/Unforgivable/Unforgivable1.PNG"]
+    memes: [
+      {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/Unforgivable/Unforgivable1.PNG"}
+    ]
   };
   let json = JSON.stringify(memes);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
@@ -86,7 +91,10 @@ app.get('/unforgivable', (req, res) => {
 app.get('/bait', (req, res) => {
     let memes = {
       type: bait,
-      memes: ["https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/017.png","https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/1401539840826.png"]
+      memes: [
+        {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/017.png"},
+        {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/1401539840826.png"}
+      ]
     };
     let json = JSON.stringify(memes);
     res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
@@ -100,7 +108,10 @@ app.get('/bait', (req, res) => {
 app.get('/random', (req, res) => {
   let memes = {
     type: random,
-    memes: ["https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/017.png","https://storage.googleapis.com/memeservices-storage/AllMemes/memes/7c9.gif"]
+    memes: [
+      {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/memes/461be148cba54a6dbf34a4b2633de0fb.jpg"},
+      {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/memes/IMG_1427.JPG"}
+    ]
   };
   let json = JSON.stringify(memes);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');

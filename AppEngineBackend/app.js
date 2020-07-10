@@ -55,14 +55,38 @@ app.get('/', (req, res) => {
 
 // Return SadCat
 app.get('/sadcat', (req, res) => {
-  let memesOut = {
-    type: 'sadcat',
-    memes: [
-      {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D.jpg"},
-      {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550.jpg"}
-    ]
+  let memeString =
+  {
+    photos: {
+      page: 1,
+      pages: 1,
+      perpage: 24,
+      total: 24,
+      photo:[{
+        id: "03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D",
+        owner: "Memeservices",
+        secret: "00000",
+        farm: 0,
+        title: "Sadcat",
+        ispublic: 1,
+        isfriend: 0,
+        isfamily: 0
+      }, {
+        id: "04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550",
+        owner: "Memeservices",
+        secret: "00000",
+        farm: 0,
+        title: "Sadcat",
+        ispublic: 1,
+        isfriend: 0,
+        isfamily: 0
+      }]
+    }
   };
-  let json = JSON.stringify(memesOut);
+
+  //"https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D.jpg"
+  //"https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550.jpg"
+  let memesOut = JSON.stringify(memeString);
   res.setHeader('Access-Control-Allow-Origin', '*.memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
@@ -72,14 +96,36 @@ app.get('/sadcat', (req, res) => {
 
 // Return Unforgivable.
 app.get('/unforgivable', (req, res) => {
-  const publicUrl = `https://storage.googleapis.com/memeservices-storage/AllMemes/Unforgivable/Unforgivable1.PNG`
-  let memesOut = {
-    type: 'unforgivable',
-    memes: [
-      {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/Unforgivable/Unforgivable1.PNG"}
-    ]
+  let memeString = 
+  {
+    photos: {
+      page: 1,
+      pages: 1,
+      perpage: 24,
+      total: 24,
+      photo:[{
+        id: "03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D",
+        owner: "Memeservices",
+        secret: "00000",
+        farm: 0,
+        title: "Sadcat",
+        ispublic: 1,
+        isfriend: 0,
+        isfamily: 0
+      }, {
+        id: "04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550",
+        owner: "Memeservices",
+        secret: "00000",
+        farm: 0,
+        title: "Sadcat",
+        ispublic: 1,
+        isfriend: 0,
+        isfamily: 0
+      }]
+    }
   };
-  let json = JSON.stringify(memesOut);
+//"https://storage.googleapis.com/memeservices-storage/AllMemes/Unforgivable/Unforgivable1.PNG"}
+  let memesOut = JSON.stringify(memeString);
   res.setHeader('Access-Control-Allow-Origin', '*.memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
@@ -89,14 +135,36 @@ app.get('/unforgivable', (req, res) => {
 
 // Return Bait.
 app.get('/bait', (req, res) => {
-    let memesOut = {
-      type: 'bait',
-      memes: [
-        {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/017.png"},
-        {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/1401539840826.png"}
-      ]
+    let memeString = {
+      photos: {
+        page: 1,
+        pages: 1,
+        perpage: 24,
+        total: 24,
+        photo:[{
+          id: "03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D",
+          owner: "Memeservices",
+          secret: "00000",
+          farm: 0,
+          title: "Sadcat",
+          ispublic: 1,
+          isfriend: 0,
+          isfamily: 0
+        }, {
+          id: "04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550",
+          owner: "Memeservices",
+          secret: "00000",
+          farm: 0,
+          title: "Sadcat",
+          ispublic: 1,
+          isfriend: 0,
+          isfamily: 0
+        }]
+      }
     };
-    let json = JSON.stringify(memesOut);
+// "https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/017.png"
+//  "https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/1401539840826.png"
+    let memesOut = JSON.stringify(memeString);
     res.setHeader('Access-Control-Allow-Origin', '*.memeservices.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
@@ -106,14 +174,36 @@ app.get('/bait', (req, res) => {
 
 // Return Random.
 app.get('/random', (req, res) => {
-  let memesOut = {
-    type: 'random',
-    memes: [
-      {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/memes/461be148cba54a6dbf34a4b2633de0fb.jpg"},
-      {url: "https://storage.googleapis.com/memeservices-storage/AllMemes/memes/IMG_1427.JPG"}
-    ]
+  let memeString = {
+    photos: {
+      page: 1,
+      pages: 1,
+      perpage: 24,
+      total: 24,
+      photo:[{
+        id: "461be148cba54a6dbf34a4b2633de0fb",
+        owner: "Memeservices",
+        secret: "00000",
+        farm: 0,
+        title: "memes",
+        ispublic: 1,
+        isfriend: 0,
+        isfamily: 0
+      }, {
+        id: "IMG_1427.JPG",
+        owner: "Memeservices",
+        secret: "00000",
+        farm: 0,
+        title: "memes",
+        ispublic: 1,
+        isfriend: 0,
+        isfamily: 0
+      }]
+    }
   };
-  let json = JSON.stringify(memesOut);
+// "https://storage.googleapis.com/memeservices-storage/AllMemes/memes/461be148cba54a6dbf34a4b2633de0fb.jpg"},
+// "https://storage.googleapis.com/memeservices-storage/AllMemes/memes/IMG_1427.JPG"}
+  let memesOut = JSON.stringify(memeString);
   res.setHeader('Access-Control-Allow-Origin', '*.memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');

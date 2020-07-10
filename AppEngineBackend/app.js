@@ -87,7 +87,7 @@ app.get('/sadcat', (req, res) => {
   //"https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D.jpg"
   //"https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550.jpg"
   let memesOut = JSON.stringify(memeString);
-  res.setHeader('Access-Control-Allow-Origin', '*.memeservices.com');
+  res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -126,7 +126,7 @@ app.get('/unforgivable', (req, res) => {
   };
 //"https://storage.googleapis.com/memeservices-storage/AllMemes/Unforgivable/Unforgivable1.PNG"}
   let memesOut = JSON.stringify(memeString);
-  res.setHeader('Access-Control-Allow-Origin', '*.memeservices.com');
+  res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -165,7 +165,7 @@ app.get('/bait', (req, res) => {
 // "https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/017.png"
 //  "https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/1401539840826.png"
     let memesOut = JSON.stringify(memeString);
-    res.setHeader('Access-Control-Allow-Origin', '*.memeservices.com');
+    res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
     res.setHeader('Access-Control-Allow-Credentials', true);
@@ -204,7 +204,7 @@ app.get('/random', (req, res) => {
 // "https://storage.googleapis.com/memeservices-storage/AllMemes/memes/461be148cba54a6dbf34a4b2633de0fb.jpg"},
 // "https://storage.googleapis.com/memeservices-storage/AllMemes/memes/IMG_1427.JPG"}
   let memesOut = JSON.stringify(memeString);
-  res.setHeader('Access-Control-Allow-Origin', '*.memeservices.com');
+  res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -214,7 +214,7 @@ app.get('/random', (req, res) => {
 // Process the file upload and upload to Google Cloud Storage.
 app.post('/upload', multer.single('file'), (req, res, next) => {
   if (!req.file) {
-    res.setHeader('Access-Control-Allow-Origin', '*.memeservices.com');
+    res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
     res.setHeader('Access-Control-Allow-Credentials', true);
@@ -235,7 +235,7 @@ app.post('/upload', multer.single('file'), (req, res, next) => {
     const publicUrl = format(
       `https://storage.googleapis.com/${bucket.name}/${blob.name}`
     );
-    res.setHeader('Access-Control-Allow-Origin', '*.memeservices.com');
+    res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
     res.setHeader('Access-Control-Allow-Credentials', true);

@@ -1,5 +1,3 @@
-// Copyright 2016 Google LLC
-//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -63,35 +61,27 @@ app.get('/sadcat', (req, res) => {
       perpage: 24,
       total: 24,
       photo:[{
-        id: "03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D",
+        id: "03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D.jpg",
         owner: "Memeservices",
         secret: "00000",
         farm: 0,
-        title: "Sadcat",
+        catagory: "Sadcat",
         ispublic: 1,
-        isfriend: 0,
-        isfamily: 0
       }, {
-        id: "04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550",
+        id: "04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550.jpg",
         owner: "Memeservices",
         secret: "00000",
         farm: 0,
-        title: "Sadcat",
+        catagory: "Sadcat",
         ispublic: 1,
-        isfriend: 0,
-        isfamily: 0
       }]
     }
   };
-
-  //"https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D.jpg"
-  //"https://storage.googleapis.com/memeservices-storage/AllMemes/Sadcat/04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550.jpg"
-  let memesOut = JSON.stringify(memeString);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Credentials', true);
-  res.status(200).json(memesOut);
+  res.status(200).json(memeString);
 });
 
 // Return Unforgivable.
@@ -104,33 +94,19 @@ app.get('/unforgivable', (req, res) => {
       perpage: 24,
       total: 24,
       photo:[{
-        id: "03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D",
+        id: "Unforgivable1.PNG",
         owner: "Memeservices",
-        secret: "00000",
         farm: 0,
-        title: "Sadcat",
+        catagory: "Unforgivable",
         ispublic: 1,
-        isfriend: 0,
-        isfamily: 0
-      }, {
-        id: "04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550",
-        owner: "Memeservices",
-        secret: "00000",
-        farm: 0,
-        title: "Sadcat",
-        ispublic: 1,
-        isfriend: 0,
-        isfamily: 0
       }]
     }
   };
-//"https://storage.googleapis.com/memeservices-storage/AllMemes/Unforgivable/Unforgivable1.PNG"}
-  let memesOut = JSON.stringify(memeString);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Credentials', true);
-  res.status(200).json(memesOut);
+  res.status(200).json(memeString);
 });
 
 // Return Bait.
@@ -142,34 +118,25 @@ app.get('/bait', (req, res) => {
         perpage: 24,
         total: 24,
         photo:[{
-          id: "03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D",
+          id: "327.png",
           owner: "Memeservices",
-          secret: "00000",
           farm: 0,
-          title: "Sadcat",
+          catagory: "baitMemes",
           ispublic: 1,
-          isfriend: 0,
-          isfamily: 0
         }, {
-          id: "04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550",
+          id: "616.jpg",
           owner: "Memeservices",
-          secret: "00000",
           farm: 0,
-          title: "Sadcat",
+          catagory: "baitMemes",
           ispublic: 1,
-          isfriend: 0,
-          isfamily: 0
         }]
       }
     };
-// "https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/017.png"
-//  "https://storage.googleapis.com/memeservices-storage/AllMemes/baitMemes/1401539840826.png"
-    let memesOut = JSON.stringify(memeString);
     res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
     res.setHeader('Access-Control-Allow-Credentials', true);
-    res.status(200).json(memesOut);
+    res.status(200).json(memeString);
 });
 
 // Return Random.
@@ -181,34 +148,25 @@ app.get('/random', (req, res) => {
       perpage: 24,
       total: 24,
       photo:[{
-        id: "461be148cba54a6dbf34a4b2633de0fb",
+        id: "IMG_1269.PNG",
         owner: "Memeservices",
-        secret: "00000",
         farm: 0,
-        title: "memes",
+        catagory: "memes",
         ispublic: 1,
-        isfriend: 0,
-        isfamily: 0
       }, {
-        id: "IMG_1427.JPG",
+        id: "IMG_1427.jpg",
         owner: "Memeservices",
-        secret: "00000",
         farm: 0,
-        title: "memes",
+        catagory: "memes",
         ispublic: 1,
-        isfriend: 0,
-        isfamily: 0
       }]
     }
   };
-// "https://storage.googleapis.com/memeservices-storage/AllMemes/memes/461be148cba54a6dbf34a4b2633de0fb.jpg"},
-// "https://storage.googleapis.com/memeservices-storage/AllMemes/memes/IMG_1427.JPG"}
-  let memesOut = JSON.stringify(memeString);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
   res.setHeader('Access-Control-Allow-Credentials', true);
-  res.status(200).json(memesOut);
+  res.status(200).json(memeString);
 });
 
 // Process the file upload and upload to Google Cloud Storage.

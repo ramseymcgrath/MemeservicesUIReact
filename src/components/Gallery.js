@@ -9,11 +9,9 @@ const Gallery = props => {
   if (results.length > 0) {
     images = results.map(image => {
       let farm = image.farm;
-      let server = image.server;
       let id = image.id;
-      let secret = image.secret;
-      let title = image.title;
-      let url = `https://storage.googleapis.com/memeservices-storage/AllMemes/${title}/${id}.jpg`;
+      let catagory = image.catagory;
+      let url = `https://storage.googleapis.com/memeservices-storage/AllMemes/${catagory}/${id}`;
       return <Image url={url} key={id} alt={title} />;
     });
   } else {

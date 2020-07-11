@@ -46,7 +46,7 @@ const multer = Multer({
 // A bucket is a container for objects (files).
 const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET);
 
-async function listFilesByPrefix(folder) {
+async function createPhotos(folder) {
   /**
    * This can be used to list all blobs in a "folder", e.g. "public/".
    *
@@ -67,7 +67,7 @@ async function listFilesByPrefix(folder) {
    *   /a/1.txt
    */
   const options = {
-    prefix: `/${folder}`,
+    prefix: `/AllMemes/${folder}`,
   };
 
   if (delimiter) {
@@ -77,10 +77,32 @@ async function listFilesByPrefix(folder) {
   // Lists files in the bucket, filtered by a prefix
   const [files] = await storage.bucket(bucketName).getFiles(options);
 
-  return files;
-}
+  let foundFiles = [];
 
-listFilesByPrefix().catch(console.error);
+  files.forEach(file => {
+    fileObj = 
+    {
+      id: `https://storage.googleapis.com/memeservices-storage/AllMemes/${file.name}`,
+      owner: "Memeservices",
+      secret: "00000",
+      farm: 0,
+      category: "Sadcat",
+      ispublic: 1,
+    }
+    foundFiles.push(fileObj);
+  });
+  let memeString =
+  {
+    photos: {
+      page: 1,
+      pages: 1,
+      perpage: 24,
+      total: 24,
+      photo:[foundFiles]
+    }
+  };
+  return memeString;
+}
 
 // Display a form for uploading files.
 app.get('/', (req, res) => {
@@ -89,30 +111,7 @@ app.get('/', (req, res) => {
 
 // Return SadCat
 app.get('/sadcat', (req, res) => {
-  let memeString =
-  {
-    photos: {
-      page: 1,
-      pages: 1,
-      perpage: 24,
-      total: 24,
-      photo:[{
-        id: "03243CE1-1B4D-4EC0-8CC3-3F46D514149E-11618-0000061EFFBCFB6D.jpg",
-        owner: "Memeservices",
-        secret: "00000",
-        farm: 0,
-        category: "Sadcat",
-        ispublic: 1,
-      }, {
-        id: "04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550.jpg",
-        owner: "Memeservices",
-        secret: "00000",
-        farm: 0,
-        category: "Sadcat",
-        ispublic: 1,
-      }]
-    }
-  };
+  let memeString = createPhotos(`Sadcat`).catch(console.error);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
@@ -122,23 +121,7 @@ app.get('/sadcat', (req, res) => {
 
 // Return Unforgivable.
 app.get('/unforgivable', (req, res) => {
-  let memeString = 
-  {
-    photos: {
-      page: 1,
-      pages: 1,
-      perpage: 24,
-      total: 24,
-      photo:[{
-        id: "Unforgivable1.PNG",
-        owner: "Memeservices",
-        secret: "00000",
-        farm: 0,
-        category: "Unforgivable",
-        ispublic: 1,
-      }]
-    }
-  };
+  let memeString = createPhotos(`Unforgivable`).catch(console.error);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
@@ -148,29 +131,7 @@ app.get('/unforgivable', (req, res) => {
 
 // Return Bait.
 app.get('/bait', (req, res) => {
-    let memeString = {
-      photos: {
-        page: 1,
-        pages: 1,
-        perpage: 24,
-        total: 24,
-        photo:[{
-          id: "327.png",
-          owner: "Memeservices",
-          secret: "00000",
-          farm: 0,
-          category: "baitMemes",
-          ispublic: 1,
-        }, {
-          id: "616.jpg",
-          owner: "Memeservices",
-          secret: "00000",
-          farm: 0,
-          category: "baitMemes",
-          ispublic: 1,
-        }]
-      }
-    };
+  let memeString = createPhotos(`baitMemes`).catch(console.error);
     res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
@@ -180,29 +141,7 @@ app.get('/bait', (req, res) => {
 
 // Return Random.
 app.get('/random', (req, res) => {
-  let memeString = {
-    photos: {
-      page: 1,
-      pages: 1,
-      perpage: 24,
-      total: 24,
-      photo:[{
-        id: "IMG_1269.PNG",
-        owner: "Memeservices",
-        secret: "00000",
-        farm: 0,
-        category: "memes",
-        ispublic: 1,
-      }, {
-        id: "IMG_1406.JPG",
-        owner: "Memeservices",
-        secret: "00000",
-        farm: 0,
-        category: "memes",
-        ispublic: 1,
-      }]
-    }
-  };
+  let memeString = createPhotos(`memes`).catch(console.error);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');

@@ -11,7 +11,7 @@ const Gallery = props => {
       let farm = image.farm;
       let id = image.id;
       let category = image.category;
-      let url = `https://storage.googleapis.com/memeservices-storage/AllMemes/${category}/${id}`;
+      let url = image.id;
       return <Image url={url} key={id} alt={category} />;
     });
   } else {

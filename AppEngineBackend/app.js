@@ -46,6 +46,42 @@ const multer = Multer({
 // A bucket is a container for objects (files).
 const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET);
 
+async function listFilesByPrefix(folder) {
+  /**
+   * This can be used to list all blobs in a "folder", e.g. "public/".
+   *
+   * The delimiter argument can be used to restrict the results to only the
+   * "files" in the given "folder". Without the delimiter, the entire tree under
+   * the prefix is returned. For example, given these blobs:
+   *
+   *   /a/1.txt
+   *   /a/b/2.txt
+   *
+   * If you just specify prefix = '/a', you'll get back:
+   *
+   *   /a/1.txt
+   *   /a/b/2.txt
+   *
+   * However, if you specify prefix='/a' and delimiter='/', you'll get back:
+   *
+   *   /a/1.txt
+   */
+  const options = {
+    prefix: `/${folder}`,
+  };
+
+  if (delimiter) {
+    options.delimiter = `/`;
+  }
+
+  // Lists files in the bucket, filtered by a prefix
+  const [files] = await storage.bucket(bucketName).getFiles(options);
+
+  return files;
+}
+
+listFilesByPrefix().catch(console.error);
+
 // Display a form for uploading files.
 app.get('/', (req, res) => {
   res.render('form.pug');
@@ -65,14 +101,14 @@ app.get('/sadcat', (req, res) => {
         owner: "Memeservices",
         secret: "00000",
         farm: 0,
-        catagory: "Sadcat",
+        category: "Sadcat",
         ispublic: 1,
       }, {
         id: "04F08839-F2C9-40A5-B576-DBD9A4009C72-282-000000020A30F550.jpg",
         owner: "Memeservices",
         secret: "00000",
         farm: 0,
-        catagory: "Sadcat",
+        category: "Sadcat",
         ispublic: 1,
       }]
     }
@@ -98,7 +134,7 @@ app.get('/unforgivable', (req, res) => {
         owner: "Memeservices",
         secret: "00000",
         farm: 0,
-        catagory: "Unforgivable",
+        category: "Unforgivable",
         ispublic: 1,
       }]
     }
@@ -123,14 +159,14 @@ app.get('/bait', (req, res) => {
           owner: "Memeservices",
           secret: "00000",
           farm: 0,
-          catagory: "baitMemes",
+          category: "baitMemes",
           ispublic: 1,
         }, {
           id: "616.jpg",
           owner: "Memeservices",
           secret: "00000",
           farm: 0,
-          catagory: "baitMemes",
+          category: "baitMemes",
           ispublic: 1,
         }]
       }
@@ -155,14 +191,14 @@ app.get('/random', (req, res) => {
         owner: "Memeservices",
         secret: "00000",
         farm: 0,
-        catagory: "memes",
+        category: "memes",
         ispublic: 1,
       }, {
         id: "IMG_1406.JPG",
         owner: "Memeservices",
         secret: "00000",
         farm: 0,
-        catagory: "memes",
+        category: "memes",
         ispublic: 1,
       }]
     }

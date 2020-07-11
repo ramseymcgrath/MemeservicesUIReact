@@ -10,9 +10,9 @@ const Gallery = props => {
     images = results.map(image => {
       let farm = image.farm;
       let id = image.id;
-      let catagory = image.catagory;
-      let url = `https://storage.googleapis.com/memeservices-storage/AllMemes/${catagory}/${id}`;
-      return <Image url={url} key={id} alt={catagory} />;
+      let category = image.category;
+      let url = `https://storage.googleapis.com/memeservices-storage/AllMemes/${category}/${id}`;
+      return <Image url={url} key={id} alt={category} />;
     });
   } else {
     noImages = <NoImages />; // return 'not found' component if no images fetched

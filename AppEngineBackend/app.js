@@ -96,6 +96,7 @@ app.get('/unforgivable', (req, res) => {
       photo:[{
         id: "Unforgivable1.PNG",
         owner: "Memeservices",
+        secret: "00000",
         farm: 0,
         catagory: "Unforgivable",
         ispublic: 1,
@@ -120,12 +121,14 @@ app.get('/bait', (req, res) => {
         photo:[{
           id: "327.png",
           owner: "Memeservices",
+          secret: "00000",
           farm: 0,
           catagory: "baitMemes",
           ispublic: 1,
         }, {
           id: "616.jpg",
           owner: "Memeservices",
+          secret: "00000",
           farm: 0,
           catagory: "baitMemes",
           ispublic: 1,
@@ -150,12 +153,14 @@ app.get('/random', (req, res) => {
       photo:[{
         id: "IMG_1269.PNG",
         owner: "Memeservices",
+        secret: "00000",
         farm: 0,
         catagory: "memes",
         ispublic: 1,
       }, {
-        id: "IMG_1427.jpg",
+        id: "IMG_1406.JPG",
         owner: "Memeservices",
+        secret: "00000",
         farm: 0,
         catagory: "memes",
         ispublic: 1,

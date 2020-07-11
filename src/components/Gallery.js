@@ -12,7 +12,7 @@ const Gallery = props => {
       let id = image.id;
       let catagory = image.catagory;
       let url = `https://storage.googleapis.com/memeservices-storage/AllMemes/${catagory}/${id}`;
-      return <Image url={url} key={id} alt={title} />;
+      return <Image url={url} key={id} alt={catagory} />;
     });
   } else {
     noImages = <NoImages />; // return 'not found' component if no images fetched

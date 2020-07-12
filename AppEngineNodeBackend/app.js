@@ -46,7 +46,7 @@ const multer = Multer({
 // A bucket is a container for objects (files).
 const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET);
 
-async function createPhotos(folder,delimiter) {
+async function createPhotos(folder) {
   console.log("starting photo search");
   /**
    * This can be used to list all blobs in a "folder", e.g. "public/".
@@ -67,16 +67,18 @@ async function createPhotos(folder,delimiter) {
    *
    *   /a/1.txt
    */
-  
+  console.log("prefix:");
+  console.log(`/AllMemes/${folder}`)
+
   const options = {
     prefix: `/AllMemes/${folder}`,
+    delimiter: '/'
   };
-  options.delimiter = delimiter;
 
   // Lists files in the bucket, filtered by a prefix
-  const [files] = await bucket.getFiles(options);
-  console.log("file List is:")
-  console.log(files)
+  const files = await storage.bucket(process.env.GCLOUD_STORAGE_BUCKET).getFiles(options);
+  console.log("file List is:");
+  console.log(files);
 
   let foundFiles = [];
 
@@ -117,7 +119,7 @@ app.get('/', (req, res) => {
 // Return SadCat
 app.get('/sadcat', (req, res) => {
   console.log("Calling sadcat search");
-  let memeString = createPhotos(`Sadcat`,`/`).catch(console.error);
+  let memeString = createPhotos('Sadcat').catch(console.error);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
@@ -127,7 +129,7 @@ app.get('/sadcat', (req, res) => {
 
 // Return Unforgivable.
 app.get('/unforgivable', (req, res) => {
-  let memeString = createPhotos(`Unforgivable`,`/`).catch(console.error);
+  let memeString = createPhotos('Unforgivable').catch(console.error);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
@@ -137,7 +139,7 @@ app.get('/unforgivable', (req, res) => {
 
 // Return Bait.
 app.get('/bait', (req, res) => {
-  let memeString = createPhotos(`baitMemes`,`/`).catch(console.error);
+  let memeString = createPhotos('baitMemes').catch(console.error);
     res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
@@ -147,7 +149,7 @@ app.get('/bait', (req, res) => {
 
 // Return Random.
 app.get('/random', (req, res) => {
-  let memeString = createPhotos(`memes`,`/`).catch(console.error);
+  let memeString = createPhotos('memes').catch(console.error);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');

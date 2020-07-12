@@ -1,1 +1,5 @@
-To deploy: gcloud app deploy
+To deploy:
+
+gem install bundler
+bundle install
+gcloud app deploy

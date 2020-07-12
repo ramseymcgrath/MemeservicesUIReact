@@ -1,7 +1,0 @@
-runtime: go112 # replace with go111 for Go 1.11
-
-env_variables:
-
-  GCLOUD_STORAGE_BUCKET: memeservices-storage
-  PROJECT_ID: memeservices
-  PORT: 443

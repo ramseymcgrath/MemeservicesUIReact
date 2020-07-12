@@ -47,6 +47,7 @@ const multer = Multer({
 const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET);
 
 async function createPhotos(folder,delimiter) {
+  console.log("starting photo search");
   /**
    * This can be used to list all blobs in a "folder", e.g. "public/".
    *
@@ -70,18 +71,18 @@ async function createPhotos(folder,delimiter) {
   const options = {
     prefix: `/AllMemes/${folder}`,
   };
-
-  if (delimiter) {
-    options.delimiter = delimiter;
-  }
+  options.delimiter = delimiter;
 
   // Lists files in the bucket, filtered by a prefix
-  const [files] = await storage.bucket(process.env.GCLOUD_STORAGE_BUCKET).getFiles(options);
+  const [files] = await bucket.getFiles(options);
+  console.log("file List is:")
+  console.log(files)
 
   let foundFiles = [];
 
-  files.forEach(file => {
-    foundFiles.push( 
+  files.slice(0, 10).forEach(file => {
+    console.log(file.name);
+    let fileObj =  
     {
       id: `https://storage.googleapis.com/memeservices-storage/AllMemes/${file.name}`,
       owner: "Memeservices",
@@ -89,10 +90,12 @@ async function createPhotos(folder,delimiter) {
       farm: 0,
       category: "Sadcat",
       ispublic: 1,
-    });
+    }
+    foundFiles.push(fileObj);
   });
   
-  return {
+  let photoObj =
+  {
     photos: {
       page: 1,
       pages: 1,
@@ -100,7 +103,10 @@ async function createPhotos(folder,delimiter) {
       total: 24,
       photo:[foundFiles]
     }
-  };
+  }
+
+  return photoObj;
+
 }
 
 // Display a form for uploading files.
@@ -110,6 +116,7 @@ app.get('/', (req, res) => {
 
 // Return SadCat
 app.get('/sadcat', (req, res) => {
+  console.log("Calling sadcat search");
   let memeString = createPhotos(`Sadcat`,`/`).catch(console.error);
   res.setHeader('Access-Control-Allow-Origin', 'https://memeservices.com');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

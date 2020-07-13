@@ -1,6 +1,6 @@
 # TODO: Create JSON object of memes to return
 
-# [START gae_flex_storage_app]
+# [START gae_standard_storage_app]
 require "sinatra"
 require "google/cloud/storage"
 require "json"
@@ -127,4 +127,4 @@ def getMemes (filesPrefix)
     return fullJson
 end
 
-# [END gae_flex_storage_app]
+# [END gae_standard_storage_app]

@@ -2,7 +2,6 @@
 
 # [START gae_flex_storage_app]
 require "sinatra"
-require "sinatra/cross_origin"
 require "google/cloud/storage"
 require "json"
 

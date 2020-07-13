@@ -69,26 +69,17 @@ end
 
 def getMemes (filesPrefix)
     files   = bucket.files prefix: filesPrefix
-    NumberOfFiles = files.length()
-    ReturnMemes=Array.new
-    if NumberOfFiles < 24
-        NumberOfFiles = 24
+    @NumberOfFiles = files.length()
+    @ReturnMemes=Array.new
+    if @NumberOfFiles < 24
+        @NumberOfFiles = 24
     end
-    for i in 0..NumberOfFiles
+    for i in 0..@NumberOfFiles
         meme = files.sample
         files.delete(meme)
-        url = "https://storage.googleapis.com/memeservices-storage/AllMemes/"+meme.name
-        {
-            id: "https://storage.googleapis.com/memeservices-storage/AllMemes/"+meme.name,
-            owner: "Memeservices",
-            secret: "00000",
-            farm: 0,
-            category: "Sadcat",
-            ispublic: 1,
-        }
-        ReturnMemes.push(photoObj)
+        @ReturnMemes.push("https://storage.googleapis.com/memeservices-storage/AllMemes/"+meme.name)
     end
-    pictureArray = ReturnMemes.map do |meme|
+    pictureArray = @ReturnMemes.map do |meme|
         {
             id: meme,
             owner: "Memeservices",

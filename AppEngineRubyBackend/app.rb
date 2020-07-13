@@ -76,29 +76,29 @@ def getMemes (filesPrefix)
     end
     for i in 0..@NumberOfFiles
         meme = files.sample
-        puts(meme)
         puts(meme.name)
         files.delete(meme)
-        @ReturnMemes.push("https://storage.googleapis.com/memeservices-storage/AllMemes/"+meme.name)
+        @ReturnMemes.push("https://storage.googleapis.com/memeservices-storage/"+meme.name)
     end
-    pictureArray = @ReturnMemes.map do |meme|
-        {
-            id: meme,
-            owner: "Memeservices",
-            secret: "00000",
-            farm: 0,
-            category: "Sadcat",
-            ispublic: 1
+    @PictureJSONArray = Array.new
+    @ReturnMemes.each {
+        pictureJSON = {
+            'id' => |memeUrl|
+            'owner' => "Memeservices"
+            'secret' => "00000"
+            'farm' => 0
+            'category' => "Sadcat"
+            'ispublic' => 1
         }
+        @PictureJSONArray.push(pictureJSON)
     end
-    fullJson = 
-    {
-        photos: {
-        page: 1,
-        pages: 1,
-        perpage: 24,
-        total: 24,
-        photo: pictureArray
+    fullJson = {
+        'photos' => {
+        'page' => 1
+        'pages' => 1
+        'perpage' => 24
+        'total' => 24
+        'photo' => pictureArray
         }
     }
     return fullJson

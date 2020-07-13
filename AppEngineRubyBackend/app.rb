@@ -73,6 +73,7 @@ def getMemes (filesPrefix)
     ReturnMemes=Array.new
     if NumberOfFiles < 24
         NumberOfFiles = 24
+    end
     for i in 0..NumberOfFiles
         meme = files.sample
         files.delete(meme)

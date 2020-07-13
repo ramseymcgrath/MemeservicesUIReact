@@ -88,7 +88,7 @@ def getMemes (filesPrefix)
     @PictureJSONArray = Array.new
     @ReturnMemes.each do |memeUrl|
         pictureJSON = {
-            'id' => '#{memeUrl}',
+            'id' => memeUrl,
             'owner' => "Memeservices",
             'secret' => "00000",
             'farm' => 0,

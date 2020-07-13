@@ -13,8 +13,8 @@
 # limitations under the License.
 
 # [START gae_flex_storage_yaml]
-runtime: ruby
-env: flex
+runtime: ruby25
+env: standard
 entrypoint: bundle exec ruby app.rb
 
 env_variables:

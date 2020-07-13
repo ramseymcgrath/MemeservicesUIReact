@@ -71,34 +71,39 @@ def getMemes (filesPrefix)
     files   = $bucket.files prefix: filesPrefix
     @NumberOfFiles = files.length()
     @ReturnMemes=Array.new
-    if @NumberOfFiles < 24
-        @NumberOfFiles = 24
+    puts(@NumberOfFiles)
+    if @NumberOfFiles > 24
+        @NumberOfFiles = 25
     end
-    for i in 0..@NumberOfFiles
+    puts(@NumberOfFiles)
+    puts('Getting Random Memes')
+    for i in 0..@NumberOfFiles-1
         meme = files.sample
+        puts('Meme: ')
         puts(meme.name)
         files.delete(meme)
         @ReturnMemes.push("https://storage.googleapis.com/memeservices-storage/"+meme.name)
     end
+    puts('Generating JSON')
     @PictureJSONArray = Array.new
-    @ReturnMemes.each {
+    @ReturnMemes.each do |memeUrl|
         pictureJSON = {
-            'id' => |memeUrl|
-            'owner' => "Memeservices"
-            'secret' => "00000"
-            'farm' => 0
-            'category' => "Sadcat"
-            'ispublic' => 1
+            'id' => '#{memeUrl}',
+            'owner' => "Memeservices",
+            'secret' => "00000",
+            'farm' => 0,
+            'category' => "Sadcat",
+            'ispublic' => 1,
         }
         @PictureJSONArray.push(pictureJSON)
     end
     fullJson = {
         'photos' => {
-        'page' => 1
-        'pages' => 1
-        'perpage' => 24
-        'total' => 24
-        'photo' => pictureArray
+        'page' => 1,
+        'pages' => 1,
+        'perpage' => 24,
+        'total' => 24,
+        'photo' => @PictureJSONArray
         }
     }
     return fullJson

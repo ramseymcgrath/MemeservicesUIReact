@@ -13,7 +13,7 @@ set :allow_credentials, true
 set :max_age, "1728000"
 
 storage = Google::Cloud::Storage.new
-bucket  = storage.bucket ENV["GOOGLE_CLOUD_STORAGE_BUCKET"]
+$bucket  = storage.bucket ENV["GOOGLE_CLOUD_STORAGE_BUCKET"]
 
 get "/" do
   # Present the user with an upload form
@@ -68,7 +68,7 @@ get "/random" do
 end
 
 def getMemes (filesPrefix)
-    files   = bucket.files prefix: filesPrefix
+    files   = $bucket.files prefix: filesPrefix
     @NumberOfFiles = files.length()
     @ReturnMemes=Array.new
     if @NumberOfFiles < 24
@@ -76,6 +76,8 @@ def getMemes (filesPrefix)
     end
     for i in 0..@NumberOfFiles
         meme = files.sample
+        puts(meme)
+        puts(meme.name)
         files.delete(meme)
         @ReturnMemes.push("https://storage.googleapis.com/memeservices-storage/AllMemes/"+meme.name)
     end

@@ -10,10 +10,10 @@ storage = Google::Cloud::Storage.new
 $bucket  = storage.bucket ENV["GOOGLE_CLOUD_STORAGE_BUCKET"]
 
 get "/" do
-    response.headers['allow_origin'] = "*"
-    response.headers['allow_methods'] = "GET,HEAD,POST"
-    response.headers['allow_headers'] = "content-type,if-modified-since"
-    response.headers['max_age'] = "1728000"
+    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, 
+        Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
     # Present the user with an upload form
     '
     <form method="POST" action="/upload" enctype="multipart/form-data">
@@ -24,10 +24,10 @@ get "/" do
 end
 
 post "/upload" do
-    response.headers['allow_origin'] = "*"
-    response.headers['allow_methods'] = "GET,HEAD,POST"
-    response.headers['allow_headers'] = "content-type,if-modified-since"
-    response.headers['max_age'] = "1728000"
+    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, 
+        Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
     #file_path = params[:file][:tempfile].path
     #file_name = params[:file][:filename]
 
@@ -43,10 +43,10 @@ end
 
 # List files in sadcat, generate and return JSON
 get "/sadcat" do
-    response.headers['allow_origin'] = "*"
-    response.headers['allow_methods'] = "GET,HEAD,POST"
-    response.headers['allow_headers'] = "content-type,if-modified-since"
-    response.headers['max_age'] = "1728000"
+    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, 
+        Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
     content_type :json
     memeJson = getMemes("AllMemes/Sadcat")
     memeJson.to_json
@@ -54,10 +54,10 @@ end
 
 # List files in Unforgivable, generate and return JSON
 get "/unforgivable" do
-    response.headers['allow_origin'] = "*"
-    response.headers['allow_methods'] = "GET,HEAD,POST"
-    response.headers['allow_headers'] = "content-type,if-modified-since"
-    response.headers['max_age'] = "1728000"
+    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, 
+        Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
     content_type :json
     memeJson = getMemes("AllMemes/Unforgivable")
     memeJson.to_json
@@ -65,10 +65,10 @@ end
 
 # List files in Bait Memes, generate and return JSON
 get "/bait" do
-    response.headers['allow_origin'] = "*"
-    response.headers['allow_methods'] = "GET,HEAD,POST"
-    response.headers['allow_headers'] = "content-type,if-modified-since"
-    response.headers['max_age'] = "1728000"
+    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, 
+        Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
     content_type :json
     memeJson = getMemes("AllMemes/baitMemes")
     memeJson.to_json
@@ -76,10 +76,10 @@ end
 
 # List files in Randome Memes, generate and return JSON
 get "/random" do
-    response.headers['allow_origin'] = "*"
-    response.headers['allow_methods'] = "GET,HEAD,POST"
-    response.headers['allow_headers'] = "content-type,if-modified-since"
-    response.headers['max_age'] = "1728000"
+    response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+    response.headers["Access-Control-Allow-Headers"] = "Authorization, 
+        Content-Type, Accept, X-User-Email, X-Auth-Token"
+    response.headers["Access-Control-Allow-Origin"] = "*"
     content_type :json
     memeJson = getMemes("AllMemes/memes")
     memeJson.to_json

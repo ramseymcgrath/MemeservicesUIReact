@@ -35,7 +35,7 @@ end
 
 # List files in sadcat, generate and return JSON
 get "/sadcat" do
-    response.headers['allow_origin'] = "https://memeservices.com"
+    response.headers['allow_origin'] = "*"
     response.headers['allow_methods'] = "GET,HEAD,POST"
     response.headers['allow_headers'] = "content-type,if-modified-since"
     response.headers['max_age'] = "1728000"
@@ -46,7 +46,7 @@ end
 
 # List files in Unforgivable, generate and return JSON
 get "/unforgivable" do
-    response.headers['allow_origin'] = "https://memeservices.com"
+    response.headers['allow_origin'] = "*"
     response.headers['allow_methods'] = "GET,HEAD,POST"
     response.headers['allow_headers'] = "content-type,if-modified-since"
     response.headers['max_age'] = "1728000"
@@ -57,7 +57,7 @@ end
 
 # List files in Bait Memes, generate and return JSON
 get "/bait" do
-    response.headers['allow_origin'] = "https://memeservices.com"
+    response.headers['allow_origin'] = "*"
     response.headers['allow_methods'] = "GET,HEAD,POST"
     response.headers['allow_headers'] = "content-type,if-modified-since"
     response.headers['max_age'] = "1728000"
@@ -68,7 +68,7 @@ end
 
 # List files in Randome Memes, generate and return JSON
 get "/random" do
-    response.headers['allow_origin'] = "https://memeservices.com"
+    response.headers['allow_origin'] = "*"
     response.headers['allow_methods'] = "GET,HEAD,POST"
     response.headers['allow_headers'] = "content-type,if-modified-since"
     response.headers['max_age'] = "1728000"

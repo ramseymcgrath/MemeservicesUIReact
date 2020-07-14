@@ -25,5 +25,8 @@ React-based Memeservices UI
 - cd to AppEngineBackend
 - `gcloud app deploy` to deploy the backend
 
-## Credits
-Based on the SnapShot project: github.com/Yog9/SnapShot
+### About
+
+Frontend - ReactJS
+Backend - Ruby hosted on Google App Engine
+Storage - Google Storage

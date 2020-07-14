@@ -35,12 +35,14 @@ end
 
 # List files in sadcat, generate and return JSON
 get "/sadcat" do
-    set :allow_origin, "https://memeservices.com"
-    set :allow_methods, "GET,HEAD,POST"
-    set :allow_headers, "content-type,if-modified-since"
-    set :expose_headers, "location,link"
-    set :allow_credentials, true
-    set :max_age, "1728000"
+    #puts(headers)
+    response.headers['allow_origin'] = "https://memeservices.com"
+    response.headers['allow_methods'] = "GET,HEAD,POST"
+    response.headers['allow_headers'] = "content-type,if-modified-since"
+#    response.headers 'allow_credentials' => true
+    response.headers['max_age'] = "1728000"
+#    response.headers 'expose_headers' => "location,link"
+#    puts(headers)
     content_type :json
     memeJson = getMemes("AllMemes/Sadcat")
     memeJson.to_json
@@ -48,12 +50,12 @@ end
 
 # List files in Unforgivable, generate and return JSON
 get "/unforgivable" do
-    set :allow_origin, "https://memeservices.com"
-    set :allow_methods, "GET,HEAD,POST"
-    set :allow_headers, "content-type,if-modified-since"
-    set :expose_headers, "location,link"
-    set :allow_credentials, true
-    set :max_age, "1728000"
+    headers['allow_origin'] = "https://memeservices.com"
+    headers['allow_methods'] = "GET,HEAD,POST"
+    headers['allow_headers'] = "content-type,if-modified-since"
+    headers['allow_credentials'] = true
+    headers['max_age'] = "1728000"
+    headers['expose_headers'] = "location,link"
     content_type :json
     memeJson = getMemes("AllMemes/Unforgivable")
     memeJson.to_json
@@ -61,12 +63,12 @@ end
 
 # List files in Bait Memes, generate and return JSON
 get "/bait" do
-    set :allow_origin, "https://memeservices.com"
-    set :allow_methods, "GET,HEAD,POST"
-    set :allow_headers, "content-type,if-modified-since"
-    set :expose_headers, "location,link"
-    set :allow_credentials, true
-    set :max_age, "1728000"
+    headers['allow_origin'] = "https://memeservices.com"
+    headers['allow_methods'] = "GET,HEAD,POST"
+    headers['allow_headers'] = "content-type,if-modified-since"
+    headers['allow_credentials'] = true
+    headers['max_age'] = "1728000"
+    headers['expose_headers'] = "location,link"
     content_type :json
     memeJson = getMemes("AllMemes/baitMemes")
     memeJson.to_json
@@ -74,12 +76,12 @@ end
 
 # List files in Randome Memes, generate and return JSON
 get "/random" do
-    set :allow_origin, "https://memeservices.com"
-    set :allow_methods, "GET,HEAD,POST"
-    set :allow_headers, "content-type,if-modified-since"
-    set :expose_headers, "location,link"
-    set :allow_credentials, true
-    set :max_age, "1728000"
+    headers['allow_origin'] = "https://memeservices.com"
+    headers['allow_methods'] = "GET,HEAD,POST"
+    headers['allow_headers'] = "content-type,if-modified-since"
+    headers['allow_credentials'] = true
+    headers['max_age'] = "1728000"
+    headers['expose_headers'] = "location,link"
     content_type :json
     memeJson = getMemes("AllMemes/memes")
     memeJson.to_json
@@ -93,16 +95,16 @@ def getMemes (filesPrefix)
     if @NumberOfFiles > 24
         @NumberOfFiles = 25
     end
-    puts(@NumberOfFiles)
-    puts('Getting Random Memes')
+#    puts(@NumberOfFiles)
+#    puts('Getting Random Memes')
     for i in 0..@NumberOfFiles-1
         meme = files.sample
-        puts('Meme: ')
-        puts(meme.name)
+#        puts('Meme: ')
+#        puts(meme.name)
         files.delete(meme)
         @ReturnMemes.push("https://storage.googleapis.com/memeservices-storage/"+meme.name)
     end
-    puts('Generating JSON')
+#    puts('Generating JSON')
     @PictureJSONArray = Array.new
     @ReturnMemes.each do |memeUrl|
         pictureJSON = {

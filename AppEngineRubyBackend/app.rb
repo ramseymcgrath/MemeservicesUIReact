@@ -10,27 +10,35 @@ storage = Google::Cloud::Storage.new
 $bucket  = storage.bucket ENV["GOOGLE_CLOUD_STORAGE_BUCKET"]
 
 get "/" do
-  # Present the user with an upload form
-  '
+    response.headers['allow_origin'] = "*"
+    response.headers['allow_methods'] = "GET,HEAD,POST"
+    response.headers['allow_headers'] = "content-type,if-modified-since"
+    response.headers['max_age'] = "1728000"
+    # Present the user with an upload form
+    '
     <form method="POST" action="/upload" enctype="multipart/form-data">
-      <input type="file" name="file">
-      <input type="submit" value="Upload">
+        <input type="file" name="file">
+        <input type="submit" value="Upload">
     </form>
-  '
+    '
 end
 
 post "/upload" do
-  #file_path = params[:file][:tempfile].path
-  #file_name = params[:file][:filename]
+    response.headers['allow_origin'] = "*"
+    response.headers['allow_methods'] = "GET,HEAD,POST"
+    response.headers['allow_headers'] = "content-type,if-modified-since"
+    response.headers['max_age'] = "1728000"
+    #file_path = params[:file][:tempfile].path
+    #file_name = params[:file][:filename]
 
-  # Upload file to Google Cloud Storage bucket
-  #file = bucket.create_file file_path, file_name, acl: "public"
+    # Upload file to Google Cloud Storage bucket
+    #file = bucket.create_file file_path, file_name, acl: "public"
 
-  # The public URL can be used to directly access the uploaded file via HTTP
-  #file.public_url
-  '
-  <p> Sorry, uploads disabled </p>
-  '
+    # The public URL can be used to directly access the uploaded file via HTTP
+    #file.public_url
+    '
+    <p> Sorry, uploads disabled </p>
+    '
 end
 
 # List files in sadcat, generate and return JSON

@@ -90,7 +90,7 @@ def getMemes (filesPrefix)
     @NumberOfFiles = files.length()
     @ReturnMemes=Array.new
     if @NumberOfFiles > 24
-        @NumberOfFiles = 25
+        @NumberOfFiles = 24
     end
     for i in 0..@NumberOfFiles-1
         meme = files.sample
